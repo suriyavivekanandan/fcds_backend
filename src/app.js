@@ -8,7 +8,7 @@ import userRoute from './routes/food.routes.js';
 const app = express();
 
 app.use(cors({
-  origin: "http://localhost:5173"
+  origin: "https://fcds-frontend.onrender.com"
 }));
 
 app.use(express.json({ limit: '16kb' }));
