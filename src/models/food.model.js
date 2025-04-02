@@ -16,8 +16,9 @@ const dishSchema = new mongoose.Schema({
     remainingWeight: {
         type: Number,
         required: true
-    }
+    },
 });
+
 
 const foodEntrySchema = new mongoose.Schema({
     date: {

@@ -6,37 +6,33 @@ export const createBooking = async (req, res) => {
     try {
         const { dishId, name, charityName } = req.body;
 
-        // Ensure the dish exists in the FoodEntry collection
+        // Fetch dish name from FoodEntry
         const foodEntry = await FoodEntry.findOne({ "dishes._id": dishId });
-
         if (!foodEntry) {
             return res.status(404).json({ message: 'Dish not found in FoodEntry' });
         }
 
-        // Find the dish in the FoodEntry collection
         const dish = foodEntry.dishes.find(d => d._id.toString() === dishId);
-
         if (!dish) {
             return res.status(404).json({ message: 'Dish not found' });
         }
 
-        // Create a new booking instance
+        
         const newBooking = new Booking({
             dishId,
-            dishName: dish.name,  // Store the dish name in the booking
+            dishName: dish.name, // 
             name,
             charityName,
         });
 
-        // Save the booking to the database
         await newBooking.save();
-
         res.status(200).json({ message: 'Booking successful', booking: newBooking });
     } catch (error) {
         console.error('Error processing booking:', error);
         res.status(500).json({ message: 'An error occurred while processing the booking' });
     }
 };
+
 
 // Get all bookings
 export const getAllBookings = async (req, res) => {

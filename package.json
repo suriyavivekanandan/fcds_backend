@@ -10,7 +10,7 @@
     "backend",
     "javascript"
   ],
-  "author": "Kannan",
+  "author": "Kesavan",
   "license": "ISC",
   "devDependencies": {
     "nodemon": "^3.0.2",

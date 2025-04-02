@@ -1,11 +1,10 @@
 import mongoose from 'mongoose';
 
-// Define the schema with timestamps to include createdAt and updatedAt fields automatically
 const bookingSchema = new mongoose.Schema({
     name: { type: String, required: true },
     charityName: { type: String, required: true },
-    dishId: { type: mongoose.Schema.Types.ObjectId, ref: 'Dish', required: true }
-}, { timestamps: true }); // This will add createdAt and updatedAt fields automatically
+    dishId: { type: mongoose.Schema.Types.ObjectId, ref: 'Dish', required: true },
+    dishName: { type: String, required: true } // ✅ Store dish name directly
+}, { timestamps: true });
 
-// Export the model
 export default mongoose.model('Booking', bookingSchema);
